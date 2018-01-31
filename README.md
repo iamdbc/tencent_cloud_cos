@@ -22,6 +22,7 @@ Or install it yourself as:
 
 以下配置项都在腾讯云 COS 查找，host 就是访问域名，选择 适用于XML API 那个，JSON API 那个测试不成功。
 
+```ruby
 TencentCloudCos.configure do |config|
     config.app_id     = 'app_id'
     config.secret_id  = 'secret_id'
@@ -31,11 +32,12 @@ end
 
 file = File.open('./uploadfile.jpg', 'r')
 
-第一个参数是要上传的文件，第二个是要上传的文件名，文件名必须以 '/' 开头
+# 第一个参数是要上传的文件，第二个是要上传的文件名，文件名必须以 '/' 开头
 
 response = TencentCloudCos.put(file, "/filename.jpg")
 
-response.code == 200 代表成功，否则失败，查看 response.headers 的详情 。
+response.code == 200 # 200 代表成功，否则失败，查看 response.headers 的详情 。
+```
 
 ## Development
 

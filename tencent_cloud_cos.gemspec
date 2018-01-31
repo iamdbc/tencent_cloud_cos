@@ -7,21 +7,12 @@ Gem::Specification.new do |spec|
   spec.name          = "tencent_cloud_cos"
   spec.version       = TencentCloudCos::VERSION
   spec.authors       = ["iamdbc"]
-  spec.email         = ["duan.baochen@gmail.com"]
+  spec.email         = [""]
 
   spec.summary       = %q{tencent cloud cos sdk.}
   spec.description   = %q{tencent cloud cos sdk.}
   spec.homepage      = "https://github.com/iamdbc/tencent_cloud_cos"
   spec.license       = "MIT"
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  if spec.respond_to?(:metadata)
-    spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
-  else
-    raise "RubyGems 2.0 or newer is required to protect against " \
-      "public gem pushes."
-  end
 
   spec.files         = Dir['lib/**/*.rb']
   spec.bindir        = "exe"
