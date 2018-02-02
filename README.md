@@ -2,6 +2,11 @@
 
 这是我的第一个 gem，用于腾讯云 COS 存储。
 
+TODO:
+- [x] 上传资源到 COS
+- [ ] 如何设置静态域名来访问上传文件(COS默认是下载，不能在线预览)
+- [ ] 增加更多接口
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -56,3 +61,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the TencentCloudCos project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/iamdbc/tencent_cloud_cos/blob/master/CODE_OF_CONDUCT.md).
+
