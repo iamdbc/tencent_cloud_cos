@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tencent_cloud_cos (0.1.0)
+    tencent_cloud_cos (0.2.0)
       rest-client
 
 GEM

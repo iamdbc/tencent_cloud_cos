@@ -15,12 +15,12 @@ describe TencentCloudCos::Authorization do
   end
 
   it "should get sign" do
-    sign = '91cbfae296c77563dcb0172ae0e85308a0ea93e0'
+    sign = '7aa0233f5fa59f387baa17855c61cacd403ac29d'
     expect(@authorization.sign).to eq sign
   end
 
   it "should get header authorization" do
-    auth_header = 'q-sign-algorithm=sha1&q-ak=fakesecretidqwerty&q-sign-time=1517289668;1517293328&q-key-time=1517289668;1517293328&q-header-list=host&q-url-param-list=&q-signature=91cbfae296c77563dcb0172ae0e85308a0ea93e0'
+    auth_header = 'q-sign-algorithm=sha1&q-ak=fakesecretidqwerty&q-sign-time=1517289668;1517293328&q-key-time=1517289668;1517293328&q-header-list=content-type;host&q-url-param-list=&q-signature=7aa0233f5fa59f387baa17855c61cacd403ac29d'
     expect(@authorization.auth_header).to eq auth_header
   end
 
