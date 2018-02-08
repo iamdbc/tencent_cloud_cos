@@ -4,16 +4,17 @@ RSpec.describe TencentCloudCos do
   end
 
   it "put object to cos success" do
+    # 设置为自己 bucket 的参数
     TencentCloudCos.configure do |config|
-      config.app_id     = 'app_id'
-      config.secret_id  = 'secret_id'
-      config.secret_key = 'secret_key'
-      config.host       = 'bucket-appid.cos.ap-beijing.myqcloud.com'
+      config.app_id     = ''
+      config.secret_id  = ''
+      config.secret_key = ''
+      config.host       = ''
     end
 
-    file = File.open('./spec/test.jpg', 'r')
+    file = File.open('./spec/egg.png', 'r')
     
-    response = TencentCloudCos.put(file, "/#{Time.now.to_i}.jpg")
+    response = TencentCloudCos.put(file, "/#{Time.now.to_i}.png")
 
     expect(response.code).to eq 200
   end

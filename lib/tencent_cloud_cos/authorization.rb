@@ -11,14 +11,14 @@ module TencentCloudCos
 
     def sign
       sign_key = OpenSSL::HMAC.hexdigest('sha1', secret_key, sign_time)
-      http_string = "#{method}\n#{uri}\n\nhost=#{host}\n"
+      http_string = "#{method}\n#{uri}\n\ncontent-type=#{content_type}&host=#{host}\n"
       sha1ed_http_string = Digest::SHA1.hexdigest http_string
       string_to_sign = "sha1\n#{sign_time}\n#{sha1ed_http_string}\n"
       signature = OpenSSL::HMAC.hexdigest('sha1', sign_key, string_to_sign)
     end
 
     def auth_header
-      auth = "q-sign-algorithm=sha1&q-ak=#{secret_id}&q-sign-time=#{sign_time}&q-key-time=#{sign_time}&q-header-list=host&q-url-param-list=&q-signature=#{sign}"
+      auth = "q-sign-algorithm=sha1&q-ak=#{secret_id}&q-sign-time=#{sign_time}&q-key-time=#{sign_time}&q-header-list=content-type;host&q-url-param-list=&q-signature=#{sign}"
     end
 
     private
@@ -45,6 +45,10 @@ module TencentCloudCos
 
     def sign_time
       "#{Time.now.to_i-60};#{Time.now.to_i + 3600}"
+    end
+
+    def content_type
+      URI::escape(@config.content_type, /\W/)
     end
 
   end

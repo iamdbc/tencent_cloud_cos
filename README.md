@@ -1,10 +1,9 @@
 # TencentCloudCos
 
-这是我的第一个 gem，用于腾讯云 COS 存储。
+用于腾讯云 COS 存储。
 
 TODO:
 - [x] 上传资源到 COS
-- [ ] 如何设置静态域名来访问上传文件(COS默认是下载，不能在线预览)
 - [ ] 增加更多接口
 
 ## Installation
@@ -25,7 +24,9 @@ Or install it yourself as:
 
 ## Usage
 
-以下配置项都在腾讯云 COS 查找，host 就是访问域名，选择 适用于XML API 那个，JSON API 那个测试不成功。
+以下配置项都在腾讯云 COS 查找，host 就是访问域名，选择适用于 XML API 那个，JSON API 那个测试不成功。
+
+*注: host 千万不要加 https://*
 
 ```ruby
 TencentCloudCos.configure do |config|
@@ -35,14 +36,23 @@ TencentCloudCos.configure do |config|
     config.host       = 'bucket-appid.cos.ap-beijing.myqcloud.com'
 end
 
+# 默认设置 content_type 为 image/jpeg，如需修改，请按如下设置
+TencentCloudCos.config.content_type = 'image/png'
+
 file = File.open('./uploadfile.jpg', 'r')
 
-# 第一个参数是要上传的文件，第二个是要上传的文件名，文件名必须以 '/' 开头
+# 第一个参数是要上传的文件，第二个是要上传的文件名，文件名必须以 '/' 开头，相同资源名会覆盖
 
 response = TencentCloudCos.put(file, "/filename.jpg")
 
 response.code == 200 # 200 代表成功，否则失败，查看 response.headers 的详情 。
 ```
+
+**腾讯云 COS 默认的访问域名打开资源是下载，需要在存储桶基础配置中打开“静态网站”的设置，之后用静态网站加资源名称访问，即为在线预览。**
+
+## Test
+
+修改 spec/tencent_cloud_cos_spec.rb 中 TencentCloudCos 相关配置为自己 bucket 的配置，否则测试 TencentCloudCos.put 会报错。
 
 ## Development
 
